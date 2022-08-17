@@ -1,0 +1,88 @@
+.Inputbar{
+    border: 1px solid lightgray;
+    width: 40%;
+    padding: 10px;
+    margin: 10px auto;
+}
+
+.avtar-head{
+    /* border: 1px solid red; */
+    height: 200px;
+    display: flex;
+    height: 50px;
+}
+
+.avatar{
+    /* border: 1px solid red; */
+    width: 10%;
+}
+.avatar>img{
+    /* border: 1px solid red; */
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+}
+
+.textarea{
+    /* border: 1px solid lightgray; */
+    border: none;
+    text-align: left;
+    margin-top: 0;
+    margin-left: 10px;
+    margin-bottom: 0;
+    font-size: 18px;
+    padding: 10px;
+    width: 80%;
+}
+.textarea:focus{
+    outline: none;
+}
+
+.buttons-div{
+    border: 1px solid lightgray;
+    margin-top: 40px;
+    height: 40px;
+    text-align: right;
+}
+.buttons-div>button{
+    /* border: 1px solid red; */
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    border: 0.5px solid grey;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+.tags{
+    border: 1px solid lightgray;
+    width: 70%;
+    margin-top: 20px;
+}
+.flex-div{
+    /* border: 1px solid lightgray; */
+    margin: 5px 5px 5px 10px;
+    display: flex;
+}
+.flex-div>div{
+    border: 1px solid lightgray;
+    width: 50%;
+    margin: 0 10px 0 10px;
+    padding-left: 10px;
+    border-radius: 20px;
+    background-color: lightgray;
+}
+
+.gif-container{
+    border: 1px solid red;
+    height: 260px;
+    overflow-y: scroll;
+}
+.gif-container>div{
+    border: 1px solid red;
+    height: 240px;
+}
+.gif-container>div>img{
+    border: 1px solid red;
+    width: 100%;
+    height: 100%;
+}

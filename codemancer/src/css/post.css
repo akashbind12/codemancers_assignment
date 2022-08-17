@@ -1,0 +1,74 @@
+.contacts{
+    border: 1px solid lightgrey;
+    width: 40%;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+.avtar-head{
+    /* border: 1px solid red; */
+    height: 200px;
+    display: flex;
+    height: 50px;
+}
+
+.avatar{
+    /* border: 1px solid red; */
+    width: 10%;
+}
+.avatar>img{
+    /* border: 1px solid red; */
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+}
+.avatar-name{
+    /* border: 1px solid red; */
+    width: 80%;
+}
+.name{
+    /* border: 1px solid red; */
+    text-align: left;
+    margin-top: 0;
+    margin-left: 10px;
+    color: darkblue;
+    margin-bottom: 0;
+}
+.date{
+    /* border: 1px solid red; */
+    text-align: left;
+    margin-top: 0;
+    margin-left: 10px;
+    margin-bottom: 0;
+}
+.discription{
+    /* border: 1px solid red;  */
+    padding: 0;
+}
+.discription>p{
+    /* border: 1px solid red;  */
+    text-align: left;
+    margin: 0;
+}
+.post-img{
+    /* border: 1px solid red; */
+    height: 500px;
+    width: 100%;
+    margin: 10px 0;
+}
+.post-img>img{
+    /* border: 1px solid red; */
+    height: 100%;
+    width: 100%;
+}
+.like-div{
+    /* border: 1px solid red; */
+    display: flex;
+}
+.like-div>*{
+    /* border: 1px solid red; */
+    display: flex;
+    width: 20px ;
+    height : 20px;
+    padding: 0 10px 0 10px;
+}
