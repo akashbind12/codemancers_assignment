@@ -20,18 +20,20 @@ import {
 export const Inputbar = ({setPostdata, postdata}) => {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
+    const current = new Date();
+    const time = current.toLocaleString();
 
     const [searchtext, setSearchText] = useState("hello")
+    
     const [gifs, setGifs] = useState([])
     const [data, seData] = useState({
         "img": "null",
-        "text" : ""
+        "text" : "",
+        "time" : time
     })
     useEffect(() => {
         getdata()
     }, [searchtext])
-    
-    console.log(data)
     
 
     const getdata = () => {
@@ -94,10 +96,10 @@ export const Inputbar = ({setPostdata, postdata}) => {
                                         </PopoverHeader>
                                         <PopoverBody>
                                 
-                                            <div className="gif-container">
-                                             {gifs?.map((e) => {
+                                            <div  className="gif-container">
+                                             {gifs?.map((e,i) => {
                                                 return (
-                                                    <div >
+                                                    <div key={i} >
                                                         <img id="img" onClick={() => seData({ ...data, "img": e.images.original.url }) } src={e.images.original.url} alt="gif" />
                                                     </div>
                                                 )
@@ -124,8 +126,9 @@ export const Inputbar = ({setPostdata, postdata}) => {
                             )
                             onClose()
                             seData({
+                                ...data,
                                 "img": "null",
-                                "text" : ""
+                                "text" : "",
                             })
                         }} >
                         Post

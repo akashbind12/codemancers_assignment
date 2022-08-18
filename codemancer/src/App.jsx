@@ -11,7 +11,8 @@ function App() {
   const [postdata, setPostdata] = useState([
     {
       img: 'https://media2.giphy.com/media/noyBeNjH4nbtXV5ZLA/giphy.gif?cid=f23b8b95emqezfprxqoo2mmmeea7k0onp6b08pvgeviyb3d7&rid=giphy.gif&ct=g',
-      text: 'hello welcome'
+      text: 'hello welcome',
+      time : "8/18/2022, 7:53:02 PM"
     }
   ])
 
@@ -28,15 +29,16 @@ function App() {
              </div>
              <div className='avatar-name' >
                  <p className='name'>Akash bind</p>
-                 <p className='date'>6 Aprill at 21:12</p>
+                <p className='date'>{post.time}</p>
              </div>
          </div>
          <div className='discription' >
              <p>{post.text}</p>
          </div>
-         <div className='post-img'>
-             <img src={post.img} alt="post-img" />
-         </div>
+            {post.img == "null" ? null :
+              <div className='post-img'>
+                <img src={post.img} alt="post-img" />
+              </div>}
          <div className='like-div'>
              <AiFillLike></AiFillLike> 
              <BiComment></BiComment>
