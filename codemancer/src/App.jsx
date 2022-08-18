@@ -1,49 +1,51 @@
 import { useState } from 'react'
 import './App.css';
-import { Contactcard } from "./components/post"
+import './css/post.css';
+import { AiFillLike } from 'react-icons/ai';
+import { BiComment } from 'react-icons/bi';
+import { FaShare } from 'react-icons/fa';
 import {Inputbar} from "./Components/inputbar"
 
 function App() {
-  const [detail, setDetail] = useState({
-    "name" : "",
-    "email": "",
-    "photo": "",
-    "contact" : "",
-  })
 
-   const [contacts, setContacts] = useState([])
-
-  const handledetail = (e) => {
-    setDetail({
-      ...detail,
-      [e.target.name] : e.target.value
-    })
-    // console.log(detail)
-  }
-
-  const handlesubmit = (e) => {
-    e.preventDefault();
-
-    setContacts([...contacts, detail])
-    console.log(contacts)
-  }
-
+  const [postdata, setPostdata] = useState([
+    {
+      img: 'https://media2.giphy.com/media/noyBeNjH4nbtXV5ZLA/giphy.gif?cid=f23b8b95emqezfprxqoo2mmmeea7k0onp6b08pvgeviyb3d7&rid=giphy.gif&ct=g',
+      text: 'hello welcome'
+    }
+  ])
 
 
   return (
     <div className="App">
-      {/* <h1>Add Contacts</h1>
-      <form action="submit" onSubmit={handlesubmit} >
-        <input name='name' type="text" placeholder='name' onChange={handledetail} />
-        <input name='email' type="text" placeholder='email' onChange={handledetail} />
-        <input name='photo' type="text" placeholder='image url' onChange={handledetail} />
-        <input name='contact' type="number" placeholder='contact number' onChange={handledetail} />
-        <input type="submit" />
-      </form> */}
-      <Inputbar></Inputbar>
-      <Contactcard contacts={contacts}></Contactcard>
-      
-    </div>
+      <Inputbar setPostdata={setPostdata} postdata={postdata} ></Inputbar>
+      {postdata.map((post) => {
+        return (
+          <div className='contacts'>
+         <div className='avtar-head' >
+             <div className='avatar' >
+                 <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" alt="" />
+             </div>
+             <div className='avatar-name' >
+                 <p className='name'>Akash bind</p>
+                 <p className='date'>6 Aprill at 21:12</p>
+             </div>
+         </div>
+         <div className='discription' >
+             <p>{post.text}</p>
+         </div>
+         <div className='post-img'>
+             <img src={post.img} alt="post-img" />
+         </div>
+         <div className='like-div'>
+             <AiFillLike></AiFillLike> 
+             <BiComment></BiComment>
+             <FaShare></FaShare>
+         </div>
+      </div>
+      )
+      })}
+    </div> 
   )
 }
 

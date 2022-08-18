@@ -73,16 +73,16 @@
 }
 
 .gif-container{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     height: 260px;
     overflow-y: scroll;
 }
 .gif-container>div{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     height: 240px;
 }
 .gif-container>div>img{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     width: 100%;
     height: 100%;
 }

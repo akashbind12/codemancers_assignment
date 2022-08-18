@@ -15,11 +15,38 @@ import {
     PopoverAnchor,
     Input
   } from '@chakra-ui/react'
+  import { useEffect,useState } from 'react';
 
-
-export const Inputbar = () => {
+export const Inputbar = ({setPostdata, postdata}) => {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
+
+    const [searchtext, setSearchText] = useState("hello")
+    const [gifs, setGifs] = useState([])
+    const [data, seData] = useState({
+        "img": "null",
+        "text" : ""
+    })
+    useEffect(() => {
+        getdata()
+    }, [searchtext])
+    
+    console.log(data)
+    
+
+    const getdata = () => {
+        setGifs([])
+        fetch(`https://api.giphy.com/v1/gifs/search?api_key=Sw5qxCIDBmVT8Jlw1zLmRrIn6ZwmAzVQ&q=${searchtext}&limit=25&offset=0&rating=g&lang=en`)
+        .then(response => response.json())
+            .then((data) => {
+                // console.log(data.data)
+                setGifs(data.data)
+            })
+        .catch((err) => {
+                console.log(err)
+            })
+    }
+
 
     return (
         <div className="Inputbar">
@@ -41,7 +68,10 @@ export const Inputbar = () => {
                         <div className='avatar' >
                             <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" alt="" />
                         </div>
-                        <input className="textarea" type="text" placeholder="What is in your mind ?" onClick={onOpen} />
+                        <input className="textarea" type="text" placeholder="What is in your mind ?" id="text" onChange={(e) => seData({ ...data, "text": e.target.value }) } />
+                    </div>
+                    <div className='gif-div' >
+                        {data.img == "null" ? null : <img src={data.img} alt="" />}
                     </div>
                     <ModalCloseButton />
                     <ModalBody w="800px" >
@@ -60,16 +90,18 @@ export const Inputbar = () => {
                                         <PopoverArrow />
                                         <PopoverCloseButton />
                                         <PopoverHeader>
-                                            <Input w="80%" placeholder='Search GIF' />
+                                            <Input w="80%" placeholder='Search GIF' onChange={(e) => setSearchText(e.target.value)} />
                                         </PopoverHeader>
                                         <PopoverBody>
+                                
                                             <div className="gif-container">
-                                                <div>
-                                                    <img src="https://media3.giphy.com/media/28GHfhGFWpFgsQB4wR/giphy-downsized.gif" alt="gif" />
-                                                </div>
-                                                <div>
-                                                    <img src="https://media3.giphy.com/media/28GHfhGFWpFgsQB4wR/giphy.webp" alt="gif" />
-                                                </div>
+                                             {gifs?.map((e) => {
+                                                return (
+                                                    <div >
+                                                        <img id="img" onClick={() => seData({ ...data, "img": e.images.original.url }) } src={e.images.original.url} alt="gif" />
+                                                    </div>
+                                                )
+                                            })}
                                             </div>
                                         </PopoverBody>
                                     </PopoverContent>
@@ -84,7 +116,18 @@ export const Inputbar = () => {
                         <option value='option1'>Friends</option>
                         <option value='option2'>Public</option>
                     </Select>
-                    <Button colorScheme='blue' mr={3} onClick={onClose}>
+                        <Button colorScheme='blue' mr={3} onClick={() => {
+                            setPostdata([
+                                data,
+                                ...postdata
+                            ]
+                            )
+                            onClose()
+                            seData({
+                                "img": "null",
+                                "text" : ""
+                            })
+                        }} >
                         Post
                     </Button>
                     </ModalFooter>
